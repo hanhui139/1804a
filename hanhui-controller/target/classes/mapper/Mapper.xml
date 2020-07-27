@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mapper.UserMapper">
+	<select id="selAll" resultType="com.bawei.bean.Meeting">
+		SELECT m.*,t.tname from meeting m,type t WHERE m.tid=t.tid ORDER BY create_time desc
+	</select>
+	
+	<insert id="addMeeting" parameterType="com.bawei.bean.Meeting">
+		INSERT INTO meeting
+		(code, mname, start_time, end_time, create_time, tid) 
+		VALUES 
+		(#{code}, #{mname}, #{start_time}, #{end_time}, now(), #{tid})
+	</insert>
+	
+	<select id="selType" resultType="com.bawei.bean.Type">
+		select * from type 
+	</select>
+	
+	<select id="selM" resultType="com.bawei.bean.Meeting" parameterType="int">
+		SELECT * from meeting where mid=#{mid}
+	</select>
+	
+	<update id="update" parameterType="com.bawei.bean.Meeting">
+		UPDATE meeting SET code = #{code}, mname = #{mname}, start_time = #{start_time}, end_time = #{end_time}  WHERE mid = #{mid}
+	</update>
+</mapper>
