@@ -30,9 +30,7 @@ $(function(){
 		会议编号：
 		<select id="tid" name="tid">
 			<option value="">请选择</option>
-			<option value="1">月例会</option>
-			<option value="2">学术发布</option>
-			<option value="3">技术交流</option>
+			
 		</select><br>
 		
 		<input type="submit" value="添加">
